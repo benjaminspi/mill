@@ -6,13 +6,13 @@
 
 @section('content')
 	
-	<h1>Home</h1>
+	<h1>Home 1</h1>
 
 	<ul>
 		@foreach( $mills as $mill )
 
 		<li>{{ $mill }}</li>
-		
+
 		@endforeach
 	</ul>
 
