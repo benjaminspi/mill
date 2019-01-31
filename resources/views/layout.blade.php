@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>@yield('title', 'Mühlenkaiser')</title>
+	<title>@yield('title', 'Millkaiser')</title>
 </head>
 <body>
 	Menu:
