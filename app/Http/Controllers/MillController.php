@@ -15,10 +15,10 @@ class MillController extends Controller
     public function index()
     {
 
-        $mills = Mill::all();
+        $mills= Mill::all();
 
         return view(
-            'mills.index',
+            'muehlen.index',
             ['mills' => $mills]
         );
 
@@ -31,18 +31,19 @@ class MillController extends Controller
      */
     public function create()
     {
-        //
+        return view('muehlen.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+
+        Mill::create([
+            'title' => request('title'),
+            'description' => request('description')
+        ]);
+
+        return redirect("/muehlen")->with('success', 'Stock has been added');
+
     }
 
     /**
@@ -51,9 +52,9 @@ class MillController extends Controller
      * @param  \App\Mill  $mill
      * @return \Illuminate\Http\Response
      */
-    public function show(Mill $mill)
+    public function show(Mill $muehlen)
     {
-        //
+        return view("muehlen.show", compact("muehlen"));
     }
 
     /**
@@ -62,17 +63,10 @@ class MillController extends Controller
      * @param  \App\Mill  $mill
      * @return \Illuminate\Http\Response
      */
-    public function edit( $id )
+    public function edit( Mill $muehlen )
     {
 
-
-        $muehle = Mill::find( $id );
-
-        return view(
-            "mills.edit",
-            compact("muehle")
-
-        );
+        return view("muehlen.edit", compact("muehlen"));
 
     }
 
@@ -83,9 +77,16 @@ class MillController extends Controller
      * @param  \App\Mill  $mill
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Mill $mill)
+    public function update(Request $request, Mill $muehlen)
     {
-        //
+
+        $muehlen->update([
+            'title' => request('title'),
+            'description' => request('description')
+        ]);
+
+        return redirect("/muehlen");
+
     }
 
     /**
@@ -94,8 +95,12 @@ class MillController extends Controller
      * @param  \App\Mill  $mill
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Mill $mill)
+    public function destroy(Mill $muehlen)
     {
-        //
+
+        $muehlen->delete();
+
+        return redirect("/muehlen")->with('success', 'Mühle gelöscht');
+
     }
 }
