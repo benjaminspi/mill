@@ -17,22 +17,14 @@
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">Name</label>
 			<div class="col-sm-10">
-			  <input type="text" class="form-control" id="title" name="title" placeholder="Name" value="">
+			  <input type="text" class="form-control" id="title" name="title" placeholder="Name" value="" required>
 			</div>
 		</div>
 
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">Description</label>
 			<div class="col-sm-10">
-			  <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-			</div>
-		</div>
-
-		<div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-10">
-			  <div class="checkbox">
-			    <label><input type="checkbox"> Remember me</label>
-			  </div>
+			  <textarea class="form-control" id="description" name="description" rows="4"  required></textarea>
 			</div>
 		</div>
 
@@ -44,6 +36,14 @@
 
 	</form>
 
-	</form>
+	@if ( $errors->any() )
+		<div class="alert alert-danger" role="alert">
+			<ul>
+				@foreach( $errors->all() as $error)
+					<li>{{ $error }}</li>
+				@endforeach
+			</ul>
+		</div>
+	@endif
 
 @endsection
