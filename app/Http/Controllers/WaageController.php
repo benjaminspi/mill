@@ -14,7 +14,13 @@ class WaageController extends Controller
      */
     public function index()
     {
-        //
+
+        $waagen = Waage::all();
+
+        return view(
+            'waagen.index',
+            ['waagen' => $waagen]
+        );
     }
 
     /**
@@ -22,9 +28,9 @@ class WaageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        return view('waagen.create', compact("request"));
     }
 
     /**
@@ -35,7 +41,15 @@ class WaageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = request()->validate([
+            'name' => 'required',
+            'beschreibung' => 'required',
+            'mill_id' => 'required'
+        ]);
+
+        Waage::create( $validated );
+
+        return redirect("/muehlen")->with('success', 'Stock has been added');
     }
 
     /**
@@ -44,9 +58,9 @@ class WaageController extends Controller
      * @param  \App\Waage  $waage
      * @return \Illuminate\Http\Response
      */
-    public function show(Waage $waage)
+    public function show(Waage $waagen)
     {
-        //
+        return view("waagen.show", compact("waagen"));
     }
 
     /**
@@ -55,9 +69,9 @@ class WaageController extends Controller
      * @param  \App\Waage  $waage
      * @return \Illuminate\Http\Response
      */
-    public function edit(Waage $waage)
+    public function edit(Waage $waagen)
     {
-        //
+        return view("waagen.edit", compact("waagen"));
     }
 
     /**
@@ -78,8 +92,10 @@ class WaageController extends Controller
      * @param  \App\Waage  $waage
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Waage $waage)
+    public function destroy(Waage $waagen)
     {
-        //
+        $waagen->delete();
+
+        return redirect("/waagen")->with('success', 'Mühle gelöscht');
     }
 }

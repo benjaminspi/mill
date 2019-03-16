@@ -8,7 +8,8 @@ class Waage extends Model
 {
     protected $fillable = [
     	'name',
-    	'beschreibung'
+    	'beschreibung',
+    	'mill_id'
     ];
 
     public function mill(){

@@ -18,3 +18,5 @@ Route::get('/contact', 'PagesController@contact');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('muehlen', 'MillController');
+
+Route::resource('waagen', 'WaageController');

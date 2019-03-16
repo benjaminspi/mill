@@ -34,6 +34,7 @@
 		            <li><a href="/about">About Us</a></li>
 		            <li><a href="/contact">Contact</a></li>
 		            <li><a href="/muehlen">Mühlen</a></li>
+		            <li><a href="/waagen">Waagen</a></li>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>
