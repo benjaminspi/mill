@@ -17,6 +17,13 @@ class Mill extends Model
     public function waages(){
 
     	return $this->hasMany(Waage::class);
+    	// return $this->hasMany(Waage::class, "mill_id"); // optional: define the foreign key
+
+    }
+
+    public function users(){
+
+    	return $this->belongsToMany(User::class, "favmills"); # Model not named according to convention, so 2nd param required to specify model
 
     }
 

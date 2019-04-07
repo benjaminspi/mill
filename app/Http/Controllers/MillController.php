@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 class MillController extends Controller
 {
 
+    public function __construct(){
+
+        $this->middleware('auth')->only(["create", "edit", "destroy", "store", "update"]);
+
+    }
+
     public function index() {
         $mills= Mill::all();
 
@@ -38,6 +44,7 @@ class MillController extends Controller
     }
 
     public function edit( Mill $muehlen ) {
+
         return view("muehlen.edit", compact("muehlen"));
     }
 

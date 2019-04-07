@@ -26,4 +26,17 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function mills(){
+
+        return $this->belongsToMany(Mill::class, "favmills"); # Model not named according to convention, so 2nd param required to specify model
+
+    }
+
+    public function favmills(){
+
+        return $this->hasMany(Favmills::class); # Model not named according to convention, so 2nd param required to specify model
+
+    }
+
 }

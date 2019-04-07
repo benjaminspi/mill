@@ -35,6 +35,8 @@
 		            <li><a href="/contact">Contact</a></li>
 		            <li><a href="/muehlen">Mühlen</a></li>
 		            <li><a href="/waagen">Waagen</a></li>
+		            <li><a href="/favmills">Lieblingsmühlen</a></li>
+		            <li><a href="/login">Login</a></li>
 		          </ul>
 		        </div><!--/.nav-collapse -->
 		      </div>

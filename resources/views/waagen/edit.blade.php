@@ -8,6 +8,8 @@
 
 	<h1>{{ $waagen->title }}</h1>
 
+	<p>Passt zu: {{ $waagen->mill->title }}</p>
+
 	<br>
 
 	<form method="POST" action="/waagen/{{ $waagen->id }}" class="form-horizontal">
@@ -29,15 +31,20 @@
 			</div>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <div class="checkbox">
-			    <label><input type="checkbox"> Remember me</label>
+			  	@foreach( $muehlen as $muehle )
+					<label>
+						<input type="radio" name="mill_id" value="{{ $muehle->id }}" {{ ( $waagen->mill->id == $muehle->id ) ? "checked" : "" }}> {{ $muehle->title }}
+					</label>
+					<br>
+				@endforeach
 			  </div>
 			</div>
 		</div>
 
-		<div class="form-group"> 
+		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-10">
 			  <button type="submit" class="btn btn-primary">Submit</button>
 			</div>

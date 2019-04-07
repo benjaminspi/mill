@@ -19,6 +19,8 @@
 
 	{{-- @if( $muehlen->waages->count() ) --}}
 
+	<h2>Passende Waagen</h2>
+
 	<ul class="list-group">
 		@foreach( $muehlen->waages as $waage )
 

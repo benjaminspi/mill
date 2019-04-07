@@ -20,3 +20,9 @@ Route::get('/about', 'PagesController@about');
 Route::resource('muehlen', 'MillController');
 
 Route::resource('waagen', 'WaageController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('favmills', 'FavmillsController');

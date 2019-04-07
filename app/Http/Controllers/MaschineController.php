@@ -46,7 +46,7 @@ class MaschineController extends Controller
      */
     public function show(Maschine $maschine)
     {
-        //
+        dd($maschine);
     }
 
     /**

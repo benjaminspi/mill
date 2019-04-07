@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Waage;
+use App\Mill;
 use Illuminate\Http\Request;
 
 class WaageController extends Controller
@@ -71,7 +72,10 @@ class WaageController extends Controller
      */
     public function edit(Waage $waagen)
     {
-        return view("waagen.edit", compact("waagen"));
+
+        $muehlen = Mill::all();
+
+        return view("waagen.edit", compact("waagen", "muehlen"));
     }
 
     /**
@@ -81,9 +85,15 @@ class WaageController extends Controller
      * @param  \App\Waage  $waage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Waage $waage)
+    public function update(Request $request, Waage $waagen)
     {
-        //
+        $waagen->update([
+            'name' => request('name'),
+            'beschreibung' => request('beschreibung'),
+            'mill_id' => request('mill_id')
+        ]);
+
+        return redirect("/waagen");
     }
 
     /**
